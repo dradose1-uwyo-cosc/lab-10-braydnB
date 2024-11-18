@@ -17,8 +17,18 @@ def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
 
-
-
+rockyou = Path("./rockyou.txt")
+hashpassword = Path("./hash")
+try:
+    hashpassword2 = hashpassword.read_text()
+    rockyou2 = rockyou.read_text()
+except:
+    print("cant read this text")
+thisone = rockyou2.splitlines()
+for line in thisone:
+    new = get_hash(line)
+    if str(new) == str(hashpassword2):
+        print(line)
 # Files and Exceptions
 
 # For this assignment, you will be writing a program to "crack" a password. You will need to open the file `hash` as this is the password you are trying to "crack."
